@@ -65,6 +65,9 @@ print("Checking versions of " + id + " " + name)
 
 # if no api key, don't make request
 if args.api_key:
+    # this request might be better done using the https://api.itch.io/games/<id> endpoint
+    # however, this endpoint *also* requires authentication, so an API key is still needed.
+    # leaving it like this because both basically do the same thing
     uploads = json.loads(urllib.request.urlopen("https://itch.io/api/1/" + args.api_key + "/game/" + id + "/uploads").read().decode("utf-8"))
 else:
     uploads = { "uploads": []}
