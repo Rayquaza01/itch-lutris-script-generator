@@ -6,6 +6,12 @@ import argparse
 import re
 import os
 
+# from https://github.com/lutris/lutris/blob/27905d75b99bcb6cdaeef0d9a6dd5c388ed1a73e/lutris/installer/__init__.py#L10
+AUTO_EXE_PREFIX = "_xXx_AUTO_"
+AUTO_ELF_EXE = AUTO_EXE_PREFIX + "ELF_xXx_"
+AUTO_WIN32_EXE = AUTO_EXE_PREFIX + "WIN32_xXx_"
+
+
 def generateSlug(name):
     return re.sub("[^a-zA-Z0-9\-_]", "", name.lower().replace(" ", "-"))
 
@@ -48,11 +54,6 @@ ap.add_argument("--force-linux", help="Forces the installer to use linux. Option
 ap.add_argument("--force-wine", help="Forces the installer to use wine. Optional if apikey is set", action="store_true")
 ap.add_argument("--install", help="Launches lutris to install the script immediately", action="store_true")
 args = ap.parse_args()
-
-# from https://github.com/lutris/lutris/blob/27905d75b99bcb6cdaeef0d9a6dd5c388ed1a73e/lutris/installer/__init__.py#L10
-AUTO_EXE_PREFIX = "_xXx_AUTO_"
-AUTO_ELF_EXE = AUTO_EXE_PREFIX + "ELF_xXx_"
-AUTO_WIN32_EXE = AUTO_EXE_PREFIX + "WIN32_xXx_"
 
 itchpage = json.loads(urllib.request.urlopen(args.url + "/data.json").read().decode("utf-8"))
 
