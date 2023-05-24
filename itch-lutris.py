@@ -67,7 +67,7 @@ print("Checking versions of " + id + " " + name)
 if args.api_key:
     uploads = json.loads(urllib.request.urlopen("https://itch.io/api/1/" + args.api_key + "/game/" + id + "/uploads").read().decode("utf-8"))
 else:
-    uploads = []
+    uploads = { "uploads": []}
 
 # generate various installers
 # if force linux or force wine is set, force those versions
@@ -83,6 +83,11 @@ elif any(i["p_windows"] for i in uploads["uploads"]):
     script = generateInstaller(name, id, "wine")
 else:
     # no installable versions
+    print("No installable versions!")
+    if not args.api_key:
+        print("You need to have an apikey to automatically detect what version to use")
+        print("You can get one here: https://itch.io/user/settings/api-keys")
+        print("Otherwise, you can force a specific version using the --force-linux or --force-wine flags")
     exit()
 
 filename = generateSlug(name) + ".json"
