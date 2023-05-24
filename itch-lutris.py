@@ -4,6 +4,7 @@ import urllib.request
 import subprocess
 import argparse
 import re
+import os
 
 def generateSlug(name):
     return re.sub("[^a-zA-Z0-9\-_]", "", name.lower().replace(" ", "-"))
@@ -90,4 +91,4 @@ print("Script written to " + generateSlug(name) + ".json")
 
 if args.install:
     print("Installing with lutris")
-    subprocess.Popen(["lutris", "-i", filename], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.Popen(["lutris", "-i", os.path.join(os.getcwd(), filename)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
