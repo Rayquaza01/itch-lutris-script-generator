@@ -3,9 +3,10 @@ import json
 import urllib.request
 import subprocess
 import argparse
+import re
 
 def generateSlug(name):
-    return name.lower().replace(" ", "-")
+    return re.sub("[^a-zA-Z0-9\-_]", "", name.lower().replace(" ", "-"))
 
 # script generation largely based on
 # https://github.com/lutris/lutris/blob/27905d75b99bcb6cdaeef0d9a6dd5c388ed1a73e/lutris/services/itchio.py#L309
