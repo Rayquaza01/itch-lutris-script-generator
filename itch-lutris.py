@@ -12,6 +12,8 @@ AUTO_ELF_EXE = AUTO_EXE_PREFIX + "ELF_xXx_"
 AUTO_WIN32_EXE = AUTO_EXE_PREFIX + "WIN32_xXx_"
 
 
+# generate a slug for the game by replacing spaces with dashes, changing to lowecase, and removing special chars
+# might not be perfect, but it seems to get the job done in most cases.
 def generateSlug(name):
     return re.sub("[^a-zA-Z0-9\-_]", "", name.lower().replace(" ", "-"))
 
