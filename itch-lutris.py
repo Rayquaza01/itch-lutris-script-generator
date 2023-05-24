@@ -52,9 +52,9 @@ def generateInstaller(name, id, runner):
 ap = argparse.ArgumentParser()
 ap.add_argument("url", help="The URL of the game from itch.io")
 ap.add_argument("--api-key", help="The API key for your account. Optional if force linux or force wine is set")
-ap.add_argument("--force-linux", help="Forces the installer to use linux. Optional if apikey is set", action="store_true")
-ap.add_argument("--force-wine", help="Forces the installer to use wine. Optional if apikey is set", action="store_true")
-ap.add_argument("--install", help="Launches lutris to install the script immediately", action="store_true")
+ap.add_argument("-l", "--force-linux", help="Forces the installer to use linux. Optional if apikey is set", action="store_true")
+ap.add_argument("-w", "--force-wine", help="Forces the installer to use wine. Optional if apikey is set", action="store_true")
+ap.add_argument("-i", "--install", help="Launches lutris to install the script immediately", action="store_true")
 args = ap.parse_args()
 
 itchpage = json.loads(urllib.request.urlopen(args.url + "/data.json").read().decode("utf-8"))

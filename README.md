@@ -8,9 +8,9 @@ The program takes the following arguments:
 
  * url (positional) - The URL for the game you want to install
  * apikey (optional) - Your itch.io API key. This is used to detect what platforms a game is available on. This is not needed if you force a specific version
- * force_linux (optional) - Force the program to generate a script to install the linux version. apikey is not needed if this is set
- * force_wine (optional) - Force the program to generate a script to install the windows version. apikey is not needed if this is set
- * install (optional) - Install the generated script with lutris immediately. Lutris must be in your path for this to work
+ * force_linux (l) (optional) - Force the program to generate a script to install the linux version. apikey is not needed if this is set
+ * force_wine (w) (optional) - Force the program to generate a script to install the windows version. apikey is not needed if this is set
+ * install (i) (optional) - Install the generated script with lutris immediately. Lutris must be in your path for this to work
 
 Examples:
 
